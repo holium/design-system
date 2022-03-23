@@ -1,0 +1,97 @@
+{
+  "name": "@holium/design-system",
+  "author": "",
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "tsc": "tsc",
+    "esbuild": "esbuild src/index.tsx --bundle --external:react  --external:react-is --external:react-dom --external:styled-system --external:styled-components --external:@styled-system/css --external:formik --outdir=dist --format=esm --splitting --sourcemap",
+    "esbuild:prod": "esbuild src/index.tsx --bundle --external:react --external:react-is --external:react-dom  --external:styled-system --external:styled-components --external:@styled-system/css --external:formik --outdir=dist --format=esm --splitting --sourcemap",
+    "prepare": "npm run build",
+    "build": "npm run tsc && npm run esbuild",
+    "build:prod": "npm run tsc && npm run esbuild:prod",
+    "size": "size-limit",
+    "analyze": "size-limit --why",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "size-limit": [
+    {
+      "path": "dist/index.js",
+      "limit": "300 KB"
+    }
+  ],
+  "dependencies": {
+    "@datepicker-react/hooks": "^2.8.4",
+    "@tlon/sigil-js": "^1.4.5"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "styled-components": "^5.3.3",
+    "styled-system": "^5.1.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@size-limit/preset-small-lib": "^6.0.4",
+    "@storybook/addon-a11y": "^6.3.12",
+    "@storybook/addon-controls": "^6.3.12",
+    "@storybook/addon-docs": "^6.3.12",
+    "@storybook/addon-essentials": "^6.3.12",
+    "@storybook/addon-info": "^5.3.21",
+    "@storybook/addon-knobs": "^6.3.1",
+    "@storybook/addon-links": "^6.3.12",
+    "@storybook/addon-storysource": "^6.3.12",
+    "@storybook/addons": "^6.3.12",
+    "@storybook/builder-webpack5": "^6.3.12",
+    "@storybook/manager-webpack5": "^6.3.12",
+    "@storybook/preset-scss": "^1.0.3",
+    "@storybook/react": "^6.3.12",
+    "@storybook/testing-react": "^0.0.22",
+    "@styled-system/css": "^5.1.5",
+    "@testing-library/react": "^12.1.2",
+    "@types/mocha": "^9.0.0",
+    "@types/node": "^16.11.12",
+    "@types/react": "^17.0.34",
+    "@types/react-dom": "^17.0.11",
+    "@types/styled-components": "^5.1.15",
+    "@types/styled-system": "^5.1.13",
+    "babel-loader": "^8.2.3",
+    "css-loader": "^5.0.1",
+    "dotenv-webpack": "^7.0.3",
+    "esbuild": "^0.14.2",
+    "formik": "^2.2.9",
+    "html-webpack-plugin": "^5.5.0",
+    "husky": "^7.0.4",
+    "path": "^0.12.7",
+    "react-is": "^17.0.2",
+    "remixicon-react": "^1.0.0",
+    "sass": "^1.32.5",
+    "sass-loader": "^10.1.1",
+    "size-limit": "^6.0.4",
+    "storybook-builder-vite": "^0.1.13",
+    "styled-components": "^5.3.3",
+    "styled-system": "^5.1.5",
+    "tsc": "^2.0.3",
+    "ts-loader": "^9.2.6",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.3.1",
+    "typescript": "^4.4.4",
+    "vite": "^2.6.7",
+    "webpack": "^5.64.0",
+    "webpack-cli": "^4.9.1"
+  }
+}

@@ -1,0 +1,49 @@
+@font-face {
+  font-family: "Oxanium";
+  src: local("Oxanium ExtraLight"),
+    url("./static/Oxanium-ExtraLight.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Oxanium";
+  src: local("Oxanium Light"),
+    url("./static/Oxanium-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Oxanium";
+  src: local("Oxanium Medium"),
+    url("./static/Oxanium-Medium.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Oxanium";
+  src: local("Oxanium Regular"),
+    url("./static/Oxanium-Regular.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Oxanium";
+  src: local("Oxanium SemiBold"),
+    url("./static/Oxanium-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Oxanium";
+  src: local("Oxanium Bold"),
+    url("./static/Oxanium-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Oxanium";
+  src: local("Oxanium ExtraBold"),
+    url("./static/Oxanium-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
