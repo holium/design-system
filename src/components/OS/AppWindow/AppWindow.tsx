@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Flex, Box, Fill, Sigil } from '../../..';
+import { Flex, Box, Sigil } from '../../..';
 import {
   AppWindowStyle,
   AppWindowTitleBar,
@@ -107,7 +107,7 @@ export const AppWindow: FC<AppWindowProps> = (props: AppWindowProps) => {
           </Box>
         </AppWindowTitleBar>
       </Flex>
-      <Fill>{children}</Fill>
+      {children}
     </AppWindowStyle>
   );
 };

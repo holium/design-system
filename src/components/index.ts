@@ -1,6 +1,7 @@
 export * from './Box';
 export * from './Flex';
 export * from './Grid';
+export * from './Grid2';
 export * from './Text';
 export * from './Inputs';
 export * from './Icons';

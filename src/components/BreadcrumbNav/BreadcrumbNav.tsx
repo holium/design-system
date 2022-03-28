@@ -9,8 +9,9 @@ export const BreadcrumbNavStyle = styled.div`
   align-items: center;
   justify-content: flex-start;
   height: 40px;
-  padding: 0 24px;
-  width: calc(100% - 48px);
+  min-height: 40px;
+  margin: 4px 0;
+  width: 100%;
 `;
 
 type CrumbType = {
@@ -30,7 +31,7 @@ export const BreadcrumbNav: FC<BreadcrumbNavProps> = (
   const { crumbs, onBack } = props;
   return (
     <BreadcrumbNavStyle>
-      <IconButton mr={3} onClick={() => onBack()}>
+      <IconButton tabIndex={-1} mr={3} onClick={() => onBack()}>
         <Icons.ArrowLeft />
       </IconButton>
       {crumbs.map((crumb: CrumbType, index: number) => {
@@ -51,7 +52,11 @@ export const BreadcrumbNav: FC<BreadcrumbNavProps> = (
             alignItems="center"
           >
             <Text
-              style={{ cursor: 'pointer', opacity: isLast ? 1 : 0.7 }}
+              style={{
+                flexGrow: 1,
+                cursor: 'pointer',
+                opacity: isLast ? 1 : 0.7,
+              }}
               variant="body"
               mr={2}
               onClick={() => crumb.onClick()}

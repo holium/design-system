@@ -10,7 +10,7 @@ export type ShipProps = {
 
 export const Ship: any = (props: ShipProps) => {
   return (
-    <Flex style={{ gap: 8 }} alignItems="center" padding={[4, 0, 4, 0]}>
+    <Flex style={{ gap: 8 }} alignItems="center" padding={['4px', 0, '4px', 0]}>
       <Sigil
         clickable={false}
         patp={props.patp}

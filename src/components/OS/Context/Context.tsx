@@ -53,13 +53,11 @@ export const Context: FC<ContextProps> = (props: ContextProps) => {
     return (
       <TrayButtonStyle
         tabIndex={0}
-        style={{ width: 60 }}
+        style={{ width: 60, justifyContent: 'center', alignItems: 'center' }}
         ref={contextButtonRef}
         paddingLeft="4px"
       >
-        <Flex justifyContent="center">
-          <Spinner ml={1} size={0} />
-        </Flex>
+        <Spinner ml={1} size={0} />
       </TrayButtonStyle>
     );
   }
@@ -74,7 +72,7 @@ export const Context: FC<ContextProps> = (props: ContextProps) => {
             clickable={false}
             size={16}
             borderRadiusOverride="2px"
-            color={[selectedContext.meta.color, 'white']}
+            color={[selectedContext.meta.color || '#000000', 'white']}
           />
         );
         contextLabel = selectedContext.name;

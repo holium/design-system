@@ -92,6 +92,9 @@ export const AppWindowTitleBar = styled(
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box; /* Firefox, other Gecko */
+    box-sizing: border-box; /* Opera/IE 8+ */
     height: 48px;
     width: 100%;
     /* background: ${(props: AppWindowProps) =>

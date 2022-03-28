@@ -20,11 +20,9 @@ yarn build
 
 ## Use yarn link to use design-system in apps.
 
-```zsh
-yarn link
-```
+In the design system repo folder, run the following command: `yarn link`
 
-Then in an app folder, such as `/ballot/ui`, run `yarn link "@holium/design-system"`.
+Then in an app repo, such as `ballot/ui`, run `yarn link "@holium/design-system"`.
 
 ### Future work
 
