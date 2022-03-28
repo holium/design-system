@@ -20,7 +20,7 @@ const Container = styled(styled.div`
   width: 100vw;
   max-width: 100vw;
   height: ${(props: ContainerType) =>
-    props.offset ? `calc(100% - ${props.offset}px)` : 'fit-content'};
+    props.offset ? `calc(100% - ${props.offset}px)` : 'inherit'};
   box-sizing: border-box;
   overflow-y: ${(props: ContainerType) =>
     props.scroll ? 'scroll' : 'visible'};
