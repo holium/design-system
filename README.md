@@ -1,6 +1,6 @@
 # Holium Design System
 
-We design system built with [styled-components](https://styled-components.com/) and [styled-system](https://styled-system.com/) for all Holium products.
+A design system built with [styled-components](https://styled-components.com/) and [styled-system](https://styled-system.com/) for all Holium products.
 
 ## Getting Started
 
