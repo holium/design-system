@@ -31,6 +31,7 @@ export const Sigil: any = (props: SigilProps) => {
   }
   const sigilSize = props.size / 2;
   const horizontalPadding = sigilSize / 2;
+  const isValid = props.patp.split('-').length <= 2;
   return (
     <>
       <SigilStyle
@@ -52,14 +53,24 @@ export const Sigil: any = (props: SigilProps) => {
           paddingRight: horizontalPadding,
         }}
       >
-        {sigil({
-          patp: props.patp,
-          renderer: reactRenderer,
-          size: props.size / 2,
-          icon: props.simple,
-          colors: props.color,
-          margin: false,
-        })}
+        {isValid ? (
+          sigil({
+            patp: props.patp,
+            renderer: reactRenderer,
+            size: props.size / 2,
+            icon: props.simple,
+            colors: props.color,
+            margin: false,
+          })
+        ) : (
+          <div
+            style={{
+              backgroundColor: props.color[0],
+              width: props.size / 2,
+              height: props.size / 2,
+            }}
+          ></div>
+        )}
       </SigilStyle>
 
       <Menu

@@ -64,7 +64,6 @@ const resolveConfig = (props) => {
     );
     return media;
   }, {});
-  console.log(conf);
 
   return conf;
 };
