@@ -26,7 +26,6 @@ export const Box: any = styled.div<BoxProps>(
   {
     display: 'inline-flex',
     boxSizing: 'border-box',
-    minWidth: 0,
   },
   compose(space, color, layout, flexbox, border, position)
 );

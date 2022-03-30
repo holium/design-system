@@ -15,7 +15,7 @@ export const Field: any = styled(Grid).attrs({
     props.inline &&
     css`
       grid-gap: ${props.theme.space[4]}px;
-      grid-template-columns: 1fr 4fr;
+      grid-template-columns: 2fr 4fr;
     `}
 `;
 

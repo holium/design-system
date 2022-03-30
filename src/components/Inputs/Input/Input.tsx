@@ -34,53 +34,22 @@ export type InputProps = StyledComponentProps<
     /** Does the input have a validation error */
     error?: boolean;
     variant: any;
+    small?: boolean;
   } & TypographyFunctionsProps,
   never
 >;
 
-const ContentArea: any = styled(Text)<
-  {
-    hasLeftIcon: boolean;
-    hasRightIcon: boolean;
-    error?: boolean;
-  } & TypographyFunctionsProps
->`
-  display: block;
+const InputWrapper = styled(Flex)`
+  /* display: block; */
   width: 100%;
-  appearance: none;
+  pointer-events: none;
   transition: ${(props) => props.theme.transition};
+  border: 1px solid
+    ${(props) =>
+      props.error
+        ? props.theme.colors.ui.intent.alert
+        : props.theme.colors.ui.input.borderColor};
   border-radius: ${(props) => props.theme.input.borderRadius}px;
-
-  :invalid::-webkit-datetime-edit {
-    color: ${(props) => props.theme.colors.text.placeholder};
-  }
-
-  ::-webkit-inner-spin-button,
-  ::-webkit-calendar-picker-indicator {
-    display: none;
-    -webkit-appearance: none;
-  }
-
-  padding-left: ${(props) =>
-    props.hasLeftIcon
-      ? `calc(${props.theme.fontSizes[inputTokens.iconSize]} + ${
-          2 * props.theme.space[inputTokens.x]
-        }px)`
-      : props.theme.space[inputTokens.x] + 'px'};
-
-  padding-right: ${(props) =>
-    props.hasRightIcon
-      ? inputTokens.iconSize + 2 * props.theme.space[inputTokens.x]
-      : props.theme.space[inputTokens.x]}px;
-
-  border-color: ${(props) =>
-    props.error
-      ? props.theme.colors.ui.intent.alert
-      : props.theme.colors.ui.input.borderColor};
-
-  &::placeholder {
-    color: ${(props) => props.theme.colors.text.placeholder};
-  }
 
   &:hover {
     transition: ${(props) => props.theme.transition};
@@ -97,7 +66,18 @@ const ContentArea: any = styled(Text)<
       color: transparent;
     }
   }
+  &:disabled {
+    -webkit-text-fill-color: currentColor; /* set text fill to current color for safari */
+    opacity: 1; /* correct opacity on iOS */
+    color: ${(props) => props.theme.colors.text.disabled};
+    background-color: ${(props) => props.theme.colors.ui.disabled};
+    border-color: ${(props) => props.theme.colors.ui.disabled};
 
+    &::placeholder {
+      color: ${(props) => props.theme.colors.text.disabled};
+      opacity: 1;
+    }
+  }
   &:-moz-read-only {
     background-color: ${(props) => props.theme.colors.ui.tertiary};
     border-color: ${(props) => props.theme.colors.ui.input.borderColor};
@@ -111,13 +91,70 @@ const ContentArea: any = styled(Text)<
       color: ${(props) => props.theme.colors.text.placeholder};
     }
   }
+  ${(props: any) =>
+    props.borderColor &&
+    css`
+      border-color: ${props.borderColor};
+      &:hover {
+        border-color: ${props.borderColor};
+      }
+      &:read-only {
+        border-color: ${props.borderColor};
+      }
+      &:-moz-read-only {
+        border-color: ${props.borderColor};
+      }
+      &:focus {
+        border-color: ${props.borderColor};
+      }
+    `}
+`;
+
+InputWrapper.defaultProps = {
+  // pt: inputTokens.y,
+  // pb: inputTokens.y,
+  pl: 2,
+  pr: 2,
+  borderWidth: '1px',
+  borderStyle: 'solid',
+  borderRadius: 4,
+  color: 'text.primary',
+  bg: 'ui.quaternary',
+  mb: 0,
+};
+
+const ContentArea: any = styled(Text)<
+  {
+    hasLeftIcon: boolean;
+    hasRightIcon: boolean;
+    error?: boolean;
+  } & TypographyFunctionsProps
+>`
+  display: block;
+  pointer-events: all;
+  width: 100%;
+  appearance: none;
+  outline: none;
+  border: none;
+
+  :invalid::-webkit-datetime-edit {
+    color: ${(props) => props.theme.colors.text.placeholder};
+  }
+
+  ::-webkit-inner-spin-button,
+  ::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+  }
+
+  &::placeholder {
+    color: ${(props) => props.theme.colors.text.placeholder};
+  }
 
   &:disabled {
     -webkit-text-fill-color: currentColor; /* set text fill to current color for safari */
     opacity: 1; /* correct opacity on iOS */
     color: ${(props) => props.theme.colors.text.disabled};
-    background-color: ${(props) => props.theme.colors.ui.disabled};
-    border-color: ${(props) => props.theme.colors.ui.disabled};
 
     &::placeholder {
       color: ${(props) => props.theme.colors.text.disabled};
@@ -131,17 +168,21 @@ const ContentArea: any = styled(Text)<
 ContentArea.defaultProps = {
   pt: inputTokens.y,
   pb: inputTokens.y,
-  borderWidth: '1px',
-  borderStyle: 'solid',
-  borderRadius: 4,
   color: 'text.primary',
-  bg: 'ui.quaternary',
+  bg: 'transparent',
   mb: 0,
 };
 
 const LeftIcon: any = styled(Box)<BoxProps & { disabled?: boolean }>`
-  position: absolute;
+  justify-self: flex-start;
   user-select: none;
+
+  ${(props) =>
+    props.interactive &&
+    css`
+      pointer-events: none;
+      user-select: none;
+    `}
 
   svg {
     display: block;
@@ -156,7 +197,7 @@ const LeftIcon: any = styled(Box)<BoxProps & { disabled?: boolean }>`
 const RightIcon: any = styled(Box)<
   BoxProps & { disabled?: boolean; interactive?: boolean }
 >`
-  position: absolute;
+  justify-self: flex-end;
   user-select: none;
   ${(props) =>
     props.interactive &&
@@ -191,13 +232,23 @@ export const Input: any = forwardRef<HTMLInputElement, InputProps>(
       mr,
       disabled,
       variant,
+      small,
+      borderWidth,
+      borderStyle,
+      borderRadius,
+      borderColor,
+      color,
+      bg,
       ...props
     },
     ref
   ) => (
-    <Flex
+    <InputWrapper
       alignItems="center"
       position="relative"
+      borderColor={borderColor}
+      color={color}
+      bg={bg}
       mx={mx}
       my={my}
       mb={mb}
@@ -205,11 +256,12 @@ export const Input: any = forwardRef<HTMLInputElement, InputProps>(
       ml={ml}
       mr={mr}
       flex={flex}
+      style={props.style}
     >
       {leftIcon && (
         <LeftIcon
           style={{ pointerEvents: leftInteractive ? 'auto' : 'none' }}
-          left={inputTokens.x}
+          mr={inputTokens.x}
           disabled={disabled}
         >
           {leftIcon}
@@ -219,23 +271,23 @@ export const Input: any = forwardRef<HTMLInputElement, InputProps>(
         as="input"
         variant={variant}
         ref={ref}
-        py={2}
-        hasLeftIcon={!!leftIcon}
-        hasRightIcon={!!rightIcon}
+        hasLeftIcon={leftIcon}
+        hasRightIcon={rightIcon}
         disabled={disabled}
         aria-invalid={props.error ? 'true' : 'false'}
         {...props}
+        style={{ width: '100%' }}
       />
       {rightIcon && (
         <RightIcon
           style={{ pointerEvents: rightInteractive ? 'auto' : 'none' }}
-          right={inputTokens.x}
+          ml={inputTokens.x}
           disabled={disabled}
         >
           {rightIcon}
         </RightIcon>
       )}
-    </Flex>
+    </InputWrapper>
   )
 );
 
