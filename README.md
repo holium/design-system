@@ -24,6 +24,12 @@ In the design system repo folder, run the following command: `yarn link`
 
 Then in an app repo, such as `ballot/ui`, run `yarn link "@holium/design-system"`.
 
+### Publishing to Chromatic
+
+When you push to `main`, the design system will build as a Github workflow and update the Chromatic link
+
+- [@holium/design-system Storybook](https://www.chromatic.com/library?appId=6247412e158b48003a2ee65b)
+
 ### Future work
 
 - https://github.com/mrmartineau/design-system-utils

@@ -14,7 +14,7 @@ import {
   BorderProps,
   PositionProps,
 } from 'styled-system';
-import { ThemeType } from '../../../theme';
+import type { ThemeType } from '../../../theme';
 import { selectableFocus } from '../../shared-styles';
 import { IntentProps } from './MenuItem';
 

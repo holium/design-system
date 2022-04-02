@@ -14,7 +14,7 @@ import {
   LayoutProps,
   TypographyProps,
 } from 'styled-system';
-import { Box, BoxProps } from '../Box';
+import { Box, BoxProps } from '../';
 
 export type SimpleSpinnerProps = SpaceProps &
   ColorProps &

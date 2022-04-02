@@ -5,10 +5,9 @@ import React from 'react';
 import { AppButton, AppButtonProps } from './AppButton';
 import { Story } from '@storybook/react/types-6-0';
 import { Flex, Icons } from '../';
-import { flex } from 'styled-system';
 
 export default {
-  title: 'Navigation/AppButton',
+  title: 'Components/AppButton',
   component: AppButton,
   parameters: {},
 };

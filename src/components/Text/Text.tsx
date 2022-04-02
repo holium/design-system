@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { variant } from 'styled-system';
-import { ThemeType } from '../..';
+import type { ThemeType } from '../..';
 import {
   TypographyFunctionsProps,
   typographyFunctions,

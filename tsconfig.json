@@ -15,7 +15,7 @@
     // Don't typecheck libraries in node_modules
     "skipLibCheck": true,
     // Export type declarations and only type declrations. No extra source files to dist.
-    "emitDeclarationOnly": true,
+    // "emitDeclarationOnly": true,
     "declaration": true,
     // Enables --noImplicitAny, --dnoImplicitThis, --alwaysStrict, --strictBindCallApply, --strictNullChecks, --strictFunctionTypes and --strictPropertyInitialization.
     "strict": false,
@@ -24,7 +24,8 @@
     "noFallthroughCasesInSwitch": true,
     // The following can be set to false in development to make prototyping easier.
     "noUnusedLocals": true,
-    "noUnusedParameters": true
+    "noUnusedParameters": true,
+    "isolatedModules": false
   },
   "files": ["src/index.tsx"]
 }

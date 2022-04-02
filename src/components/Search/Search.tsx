@@ -3,7 +3,7 @@
 
 import React, { useState } from 'react';
 import { SearchWrapper } from './Search.styles';
-import { Input } from '../Inputs';
+import { Input } from '../';
 import { Icons, Menu, Spinner, Flex } from '..';
 import { SearchResultList } from './ResultList';
 

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { ThemeType } from '../../../theme';
+import type { ThemeType } from '../../../theme';
 import { Grid, GridProps } from '../../Grid';
 
 type FieldProps = GridProps & {

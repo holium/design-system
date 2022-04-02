@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { ThemeType } from '..';
+import type { ThemeType } from '..';
 
 export type TabStyleProps = {
   theme: ThemeType;

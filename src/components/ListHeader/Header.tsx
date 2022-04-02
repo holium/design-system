@@ -1,8 +1,6 @@
 import React, { FC, isValidElement } from 'react';
 import { Flex, Text } from '..';
-import { ListHeaderStyle } from './ListHeader.styles';
-
-export { HeaderButton as ListHeaderButton } from './ListHeader.styles';
+import Styled from './ListHeader.styles';
 
 export type HeaderProps = {
   title: string | React.ReactNode;
@@ -17,7 +15,7 @@ export const Header: FC<HeaderProps> = (props: Partial<HeaderProps>) => {
 
   const isCustomTitle = isValidElement(title);
   return (
-    <ListHeaderStyle>
+    <Styled.ListHeaderStyle>
       <Flex
         width="100%"
         flexDirection="row"
@@ -50,6 +48,6 @@ export const Header: FC<HeaderProps> = (props: Partial<HeaderProps>) => {
         {rightContent}
       </Flex>
       {children}
-    </ListHeaderStyle>
+    </Styled.ListHeaderStyle>
   );
 };

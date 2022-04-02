@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import styled from 'styled-components';
 import { Input, HTMLSelect, FlexProps } from '../../..';
 import { BorderProps } from 'styled-system';
-import { ThemeType } from '../../../theme';
+import type { ThemeType } from '../../../theme';
 import { toISOLocal } from './helpers/timezone';
 
 type TimeInputProps = FlexProps & BorderProps & { theme?: ThemeType };

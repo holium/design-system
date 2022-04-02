@@ -2,18 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { MenuWrapper } from './Menu.styles';
 
-type IProps = {
+interface IProps {
   id: any;
   preventDefault?: boolean;
   style?: any;
   isOpen: boolean;
   clickableRef?: any;
   onClose: (...args: any) => any;
-};
+}
 
-type IState = {
+interface IState {
   isOpen?: boolean;
-};
+}
 
 //
 // Docs:

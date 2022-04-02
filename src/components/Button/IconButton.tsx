@@ -13,7 +13,7 @@ import {
   TypographyProps,
 } from 'styled-system';
 import { rgba } from 'polished';
-import { ThemeType } from '../../theme';
+import type { ThemeType } from '../../theme';
 import { selectableFocus } from '../shared-styles';
 
 type IProps = {
@@ -83,7 +83,24 @@ export const IconButton = styled(styled.button`
             }
           }
         `}
+
   ${selectableFocus}
+    
+  &:disabled {
+    color: ${(props) => props.theme.colors.ui.disabled};
+    background-color: transparent;
+    border-color: transparent;
+    cursor: default;
+    svg {
+      fill: ${(props) => props.theme.colors.ui.disabled};
+    }
+    &:hover {
+      cursor: default;
+      color: ${(props) => props.theme.colors.ui.disabled};
+      background-color: transparent;
+      border-color: transparent;
+    }
+  }
 `)<IProps>(
   {
     cursor: 'pointer',

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import ArrowRight from 'remixicon-react/ArrowRightFillIcon';
+import { Icons } from '../../';
 import Select from './Select';
 
 export default {
@@ -29,7 +29,7 @@ Default.args = {
     {
       label: 'Option 3',
       value: 'Option 3',
-      icon: <ArrowRight />,
+      icon: <Icons.ArrowRight />,
     },
   ],
   onSelected: () => {},
@@ -54,7 +54,7 @@ Selected.args = {
     {
       label: 'Option 3',
       value: 'Option 3',
-      icon: <ArrowRight />,
+      icon: <Icons.ArrowRight />,
     },
   ],
   onSelected: () => {},
@@ -80,7 +80,7 @@ Large.args = {
     {
       label: 'Option 3',
       value: 'Option 3',
-      icon: <ArrowRight />,
+      icon: <Icons.ArrowRight />,
     },
   ],
   onSelected: () => {},

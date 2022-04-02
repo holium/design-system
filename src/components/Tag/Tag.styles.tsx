@@ -45,6 +45,7 @@ export const TagStyle = styled(
           `}
     display: flex;
     flex-direction: row;
+    height: fit-content;
     align-items: center;
     /* min-height: 18px; */
     border-radius: ${(props: TagStyleProps) =>

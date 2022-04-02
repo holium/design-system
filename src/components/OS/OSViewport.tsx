@@ -10,7 +10,7 @@ import {
   // BorderProps,
   // PositionProps,
 } from 'styled-system';
-import { ThemeType } from '../../theme';
+import type { ThemeType } from '../../theme';
 type OSViewPortProps = BackgroundProps & {
   theme?: ThemeType;
   bg?: 'secondary' | 'primary' | 'inset';

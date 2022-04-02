@@ -10,7 +10,7 @@ import {
   BorderProps,
   SpaceProps,
 } from 'styled-system';
-import { ThemeType } from '../../';
+import type { ThemeType } from '../../';
 
 type DialogStyleProps = BorderProps &
   SpaceProps & {

@@ -1,4 +1,4 @@
-import { ThemeType } from './../theme';
+import type { ThemeType } from './../theme';
 import styled, { css } from 'styled-components';
 import { compose, space, SpaceProps } from 'styled-system';
 import { rgba } from 'polished';

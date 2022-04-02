@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { space, layout, SpaceProps, LayoutProps, compose } from 'styled-system';
-import { ThemeType } from '..';
+import type { ThemeType } from '..';
 
 import config, { DIMENSIONS } from './helpers';
 

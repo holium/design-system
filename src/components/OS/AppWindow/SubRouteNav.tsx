@@ -13,7 +13,7 @@ import {
   PositionProps,
   typography,
 } from 'styled-system';
-import { ThemeType } from '../../../theme';
+import type { ThemeType } from '../../../theme';
 import { selectableFocus } from '../../shared-styles';
 
 export type SubRouteStyleProps = SpaceProps &

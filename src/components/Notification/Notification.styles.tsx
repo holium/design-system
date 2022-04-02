@@ -13,7 +13,7 @@ import {
   SpaceProps,
 } from 'styled-system';
 
-import { ThemeType } from '../../';
+import type { ThemeType } from '../../';
 
 export type NotificationStyleProps = ColorProps &
   SpaceProps & {

@@ -12,7 +12,7 @@ import {
 } from 'styled-system';
 import { Flex, Text, Box, BoxProps } from '../../';
 import { TypographyFunctionsProps } from '../../typography-functions';
-import { ThemeType } from '../../../theme';
+import type { ThemeType } from '../../../theme';
 
 const inputTokens = {
   iconSize: 4, // icon size on font-size scale

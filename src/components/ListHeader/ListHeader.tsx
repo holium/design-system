@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { Flex, OptionType } from '..';
-import { OptionButton } from './ListHeader.styles';
-
-export { HeaderButton as ListHeaderButton } from './ListHeader.styles';
+import Styled from './ListHeader.styles';
+// import { OptionButton } from './ListHeader.styles';
+// export { HeaderButton as ListHeaderButton } from './ListHeader.styles';
 import { Header, HeaderProps } from './Header';
 
 export type ListHeaderProps = {
@@ -38,14 +38,14 @@ export const ListHeader: FC<ListHeaderProps> = (
         style={{ gap: '8px' }}
       >
         {options?.map((option: OptionType) => (
-          <OptionButton
+          <Styled.OptionButton
             key={option.value}
             onClick={() => onSelected(option)}
             selected={option.value === selectedOption}
             disabled={option.disabled}
           >
             {option.label}
-          </OptionButton>
+          </Styled.OptionButton>
         ))}
       </Flex>
     </Header>

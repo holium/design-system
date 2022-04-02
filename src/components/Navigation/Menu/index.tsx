@@ -1,2 +1,3 @@
-export * from "./Menu";
-export { useMenu, MenuOrientation, calculateAnchorPoint } from "./useMenu";
+export * from './Menu';
+export { useMenu, calculateAnchorPoint } from './useMenu';
+export * from './types';

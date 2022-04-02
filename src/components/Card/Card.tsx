@@ -11,7 +11,7 @@ import {
   PositionProps,
   typography,
 } from 'styled-system';
-import { ThemeType } from '../..';
+import type { ThemeType } from '../..';
 
 type CardProps = SpaceProps &
   LayoutProps &

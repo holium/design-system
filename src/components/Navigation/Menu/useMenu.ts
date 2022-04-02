@@ -1,14 +1,5 @@
 import { useEffect, useCallback, useState } from 'react';
-
-export type MenuOrientation =
-  | 'right'
-  | 'left'
-  | 'top'
-  | 'top-left'
-  | 'bottom'
-  | 'pointer'
-  | 'bottom-left'
-  | 'bottom-right';
+import { MenuOrientation } from './types';
 
 export const calculateAnchorPoint = (
   event: any,

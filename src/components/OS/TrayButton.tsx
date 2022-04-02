@@ -11,7 +11,7 @@ import {
   BorderProps,
   SpaceProps,
 } from 'styled-system';
-import { ThemeType } from '../../';
+import type { ThemeType } from '../../';
 import { selectableFocus } from '../shared-styles';
 
 export type TrayButtonStyleProps = BorderProps &

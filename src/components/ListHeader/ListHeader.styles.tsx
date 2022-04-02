@@ -1,3 +1,4 @@
+import React from 'react';
 import styled, { css } from 'styled-components';
 import {
   compose,
@@ -8,16 +9,12 @@ import {
   position,
   color,
   SpaceProps,
-  // ColorProps,
-  // LayoutProps,
-  // FlexboxProps,
   BorderProps,
-  // PositionProps,
   TypographyProps,
 } from 'styled-system';
 import { rgba } from 'polished';
 import { Button } from '..';
-import { ThemeType } from '../../theme';
+import type { ThemeType } from '../../theme';
 
 export type ListHeaderStyleProps = BorderProps &
   SpaceProps &
@@ -37,14 +34,14 @@ export type OptionProps = {
 
 // type HeaderButtonProps = { onClick: any; theme: any };
 
-export const ListHeaderStyle = styled(styled.div`
+const ListHeaderStyle = styled(styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 100%;
 `)<ListHeaderStyleProps>({});
 
-export const HeaderButton = styled(Button)`
+const HeaderButton = styled((props) => <Button {...props} />)`
   padding: 4px 8px;
   ${(props: ListHeaderStyleProps) => css`
     color: ${props.theme.colors.brand.secondary};
@@ -69,7 +66,7 @@ export const HeaderButton = styled(Button)`
   }
 `;
 
-export const OptionButton = styled(styled.button`
+const OptionButton = styled(styled.button`
   padding: 4px 8px;
   border: 1px solid ${(props) => props.theme.colors.ui.input.borderColor};
   color: ${(props) => rgba(props.theme.colors.text.primary, 0.8)};
@@ -116,3 +113,5 @@ export const OptionButton = styled(styled.button`
       pointer-events: none;
     `}
 `)<OptionProps>(compose(space, color, layout, flexbox, border, position));
+
+export default { HeaderButton, ListHeaderStyle, OptionButton };

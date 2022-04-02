@@ -14,7 +14,7 @@ import {
   // BorderProps,
   // PositionProps,
 } from 'styled-system';
-// import { ThemeType } from '../../theme';
+// import type { ThemeType } from '../../theme';
 
 export const OSViewPort = styled(styled.div`
   position: absolute;
