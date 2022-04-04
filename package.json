@@ -5,7 +5,7 @@
   "license": "MIT",
   "main": "dist/holium-design-system.cjs.js",
   "module": "dist/holium-design-system.esm.js",
-  "typings": "dist/declarations/dist/index.d.ts",
+  "typings": "dist/holium-design-system.cjs.d.ts",
   "scripts": {
     "tsc": "tsc",
     "prepare": "npm run build",
