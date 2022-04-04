@@ -3,7 +3,7 @@
   "author": "",
   "version": "0.1.0",
   "license": "MIT",
-  "main": "dist/holium-design-system.cjs.prod.js",
+  "main": "dist/holium-design-system.cjs.js",
   "module": "dist/holium-design-system.esm.js",
   "typings": "dist/declarations/dist/index.d.ts",
   "scripts": {
