@@ -13,6 +13,7 @@ type ColumnType = SpaceProps &
     align?: string | object;
     justify?: string | object;
     order?: number | object;
+    gap?: number;
     offset?: number | object;
     reverse?: boolean | Array<any>;
     noGutter?: boolean;
@@ -26,6 +27,11 @@ const Column = styled(styled.div<ColumnType>`
   max-width: 100%;
   height: ${(p: ColumnType) =>
     p.marginTop ? `calc(100% - ${String(p.marginTop)})` : 'fit-content'};
+  ${(props: ColumnType) =>
+    props.gap &&
+    css`
+      gap: ${props.gap}px;
+    `};
   display: flex;
   flex-direction: column;
   ${(p) =>

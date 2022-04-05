@@ -47,6 +47,7 @@ export const TagStyle = styled(
     flex-direction: row;
     height: fit-content;
     align-items: center;
+    width: fit-content;
     /* min-height: 18px; */
     border-radius: ${(props: TagStyleProps) =>
       props.rounded ? '12px' : `${props.theme.containers.innerBorderRadius}px`};

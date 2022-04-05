@@ -3,15 +3,19 @@ import {
   layout,
   space,
   flexbox,
+  position,
   SpaceProps,
   FlexboxProps,
   LayoutProps,
+  PositionProps,
+  compose,
 } from 'styled-system';
 import { Box } from '../Box';
 
 export type FlexProps = FlexboxProps &
   SpaceProps &
-  LayoutProps & {
+  LayoutProps &
+  PositionProps & {
     fx?: number | string;
     gap?: number | string;
     itemsCenter?: boolean;
@@ -25,7 +29,8 @@ export const Flex: any = styled(Box)<FlexProps>(
     // @ts-ignore
     flex: (props: FlexProps) => props.fx,
     // @ts-ignore
-    gap: (props: FlexProps) => props.gap,
+    gap: (props: FlexProps) =>
+      props.gap === typeof 'string' ? props.gap : `${props.gap}px`,
     //@ts-ignore
     alignItems: (props: FlexProps) =>
       props.itemsCenter ? 'center' : 'initial',
@@ -33,7 +38,5 @@ export const Flex: any = styled(Box)<FlexProps>(
     justifyContent: (props: FlexProps) =>
       props.justifyCenter ? 'center' : 'initial',
   },
-  layout,
-  space,
-  flexbox
+  compose(space, layout, flexbox, position)
 );

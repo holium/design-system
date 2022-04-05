@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import config, { DIMENSIONS } from './helpers';
 
 type RowType = {
+  fill?: boolean;
   reverse?: boolean | Array<any>;
   align?: string | object;
   justify?: string | object;
@@ -14,6 +15,12 @@ const Row = styled.div<RowType>`
   display: flex;
   flex: 1 1 auto;
   flex-wrap: wrap;
+
+  ${(p) =>
+    p.fill &&
+    css`
+      width: 100%;
+    `}
 
   ${(p) => css`
     ${DIMENSIONS.map(

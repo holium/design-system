@@ -1,16 +1,17 @@
-import * as React from 'react';
-import { SpaceProps } from 'styled-system';
+import React, { FC } from 'react';
+import { SpaceProps, WidthProps } from 'styled-system';
 import { Flex } from '..';
 import { KPILabel, KPIValue, KPIIcon } from './KPI.styles';
 
-export const KPI: any = (
-  props: {
-    inline?: boolean;
-    label: string;
-    value: string;
-    icon?: any;
-  } & SpaceProps
-) => {
+type KPIProps = {
+  inline?: boolean;
+  label?: string;
+  value: string;
+  icon?: any;
+} & SpaceProps &
+  WidthProps;
+
+export const KPI: FC<KPIProps> = (props: KPIProps) => {
   const { inline, label, value, icon } = props;
   return (
     <Flex

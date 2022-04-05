@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Flex, OptionType } from '..';
+import { Box, Flex, OptionType } from '..';
 import Styled from './ListHeader.styles';
 // import { OptionButton } from './ListHeader.styles';
 // export { HeaderButton as ListHeaderButton } from './ListHeader.styles';
@@ -8,6 +8,7 @@ import { Header, HeaderProps } from './Header';
 export type ListHeaderProps = {
   selectedOption?: string;
   options?: OptionType[];
+  rightOptions?: React.ReactNode;
   onSelected?: (option: OptionType) => void;
 } & HeaderProps;
 
@@ -20,6 +21,7 @@ export const ListHeader: FC<ListHeaderProps> = (
     rightContent,
     options,
     selectedOption,
+    rightOptions,
     onBack,
     onSelected,
   } = props;
@@ -33,20 +35,28 @@ export const ListHeader: FC<ListHeaderProps> = (
       <Flex
         width="100%"
         flexDirection="row"
-        mb="1"
+        mb={1}
         alignItems="center"
-        style={{ gap: '8px' }}
+        justifyContent="space-between"
       >
-        {options?.map((option: OptionType) => (
-          <Styled.OptionButton
-            key={option.value}
-            onClick={() => onSelected(option)}
-            selected={option.value === selectedOption}
-            disabled={option.disabled}
-          >
-            {option.label}
-          </Styled.OptionButton>
-        ))}
+        <Flex
+          flexDirection="row"
+          alignItems="center"
+          justifyContent="flex-start"
+          style={{ gap: '8px' }}
+        >
+          {options?.map((option: OptionType) => (
+            <Styled.OptionButton
+              key={option.value}
+              onClick={() => onSelected(option)}
+              selected={option.value === selectedOption}
+              disabled={option.disabled}
+            >
+              {option.label}
+            </Styled.OptionButton>
+          ))}
+        </Flex>
+        <Box justifySelf="flex-end">{rightOptions}</Box>
       </Flex>
     </Header>
   );
