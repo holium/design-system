@@ -27,6 +27,7 @@ export type StyleProps = SpaceProps &
   IntentProps & {
     theme: ThemeType;
     highlightType?: 'neutral' | 'brand' | null;
+    selected?: boolean;
     disabled?: boolean;
     interaction?: boolean;
   };
@@ -57,23 +58,27 @@ export const MenuItemStyle: any = styled(styled.li`
   cursor: pointer;
   pointer-events: auto;
 
-  &:hover {
-    transition: ${(props: StyleProps) => props.theme.transition};
-    background: ${(props: StyleProps) =>
-      props.highlightType === 'brand' && props.theme.colors.brand.primary};
-    color: ${(props: StyleProps) =>
-      props.intent
-        ? (props.intent === 'primary' && props.theme.colors.brand.primary) ||
-          props.theme.colors.ui.intent[props.intent]
-        : props.theme.colors.text.white};
-  }
+  ${(props: StyleProps) =>
+    !props.disabled &&
+    css`
+      &:hover {
+        transition: ${props.theme.transition};
+        background: ${props.highlightType === 'brand' &&
+        props.theme.colors.brand.primary};
+        color: ${props.intent
+          ? (props.intent === 'primary' && props.theme.colors.brand.primary) ||
+            props.theme.colors.ui.intent[props.intent]
+          : props.theme.colors.text.secondary};
+      }
+    `}
             
        
   /* Neutral */
   ${(props: StyleProps) =>
     props.highlightType === 'neutral' &&
+    !props.disabled &&
     css`
-      &:hover {
+      &:not(disabled):hover {
         transition: ${props.theme.transition};
         background: ${props.theme.colors.highlights.bgHighlight};
         color: ${props.theme.colors.text.secondary};
@@ -87,6 +92,16 @@ export const MenuItemStyle: any = styled(styled.li`
       -webkit-text-fill-color: currentColor; /* set text fill to current color for safari */
       color: ${(props) => props.theme.colors.text.disabled};
       border-color: ${(props) => props.theme.colors.ui.disabled};
+      opacity: 0.7;
+      cursor: default;
+      background: transparent;
+    `};
+  /* Disabled */
+  ${(props: StyleProps) =>
+    props.selected &&
+    css`
+      -webkit-text-fill-color: currentColor; /* set text fill to current color for safari */
+      color: ${(props) => props.theme.colors.brand.primary};
       cursor: default;
       background: transparent;
     `};

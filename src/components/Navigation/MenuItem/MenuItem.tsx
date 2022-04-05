@@ -12,6 +12,7 @@ export type MenuItemProps = {
   tabIndex?: number;
   label: string;
   disabled?: boolean;
+  selected?: boolean;
   children?: any;
   section?: number;
   type?: 'neutral' | 'brand';
@@ -27,6 +28,7 @@ export const MenuItem: any = (props: Partial<MenuItemProps>) => {
     intent,
     disabled,
     onClick,
+    selected,
     // subMenu
     type,
     children,
@@ -45,6 +47,7 @@ export const MenuItem: any = (props: Partial<MenuItemProps>) => {
       intent={intent}
       data-prevent-context-close={disabled}
       disabled={disabled}
+      selected={selected}
       onClick={(evt: any) => {
         if (!disabled) {
           onClick(evt);

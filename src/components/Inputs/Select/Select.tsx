@@ -206,7 +206,8 @@ export const Select: any = forwardRef<HTMLInputElement, IProps>(
           {options.map((option: OptionType, index: number) => (
             <MenuItem
               key={`${index}`}
-              disabled={selectionOption === option.value}
+              selected={selectionOption === option.value}
+              disabled={option.disabled}
               onClick={() => {
                 onSelected({ label: option.label, value: option.value });
                 onClose();
