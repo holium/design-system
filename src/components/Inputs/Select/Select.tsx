@@ -55,7 +55,7 @@ export const Select: any = forwardRef<HTMLInputElement, IProps>(
       (option: OptionType) => option.value === selectionOption
     );
     return (
-      <SelectWrapper style={style}>
+      <SelectWrapper style={style} small={small}>
         <Input
           ref={ref}
           tabIndex={tabIndex}

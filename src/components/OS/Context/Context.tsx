@@ -10,12 +10,14 @@ export type ContextType =
       name: string;
       meta: {
         color: string;
+        avatar?: string;
+        nickname?: string;
       };
     }
   | {
       type: 'group';
       name: string;
-      avatar: string;
+      meta: { color: string; picture?: string; title?: string };
     };
 
 type ContextProps = {
@@ -69,33 +71,34 @@ export const Context: FC<ContextProps> = (props: ContextProps) => {
         avatar = (
           <Sigil
             patp={selectedContext.name}
+            avatar={selectedContext.meta.avatar}
             clickable={false}
             size={16}
             borderRadiusOverride="2px"
             color={[selectedContext.meta.color || '#000000', 'white']}
           />
         );
-        contextLabel = selectedContext.name;
+        contextLabel = selectedContext.meta.nickname || selectedContext.name;
         break;
       case 'group':
-        avatar = selectedContext.avatar ? (
+        avatar = selectedContext.meta.picture ? (
           <img
             style={{ borderRadius: 2 }}
             height="16px"
             width="16px"
-            src={selectedContext.avatar}
+            src={selectedContext.meta.picture}
           />
         ) : (
           <div
             style={{
               height: 16,
               width: 16,
-              background: 'black',
+              background: selectedContext.meta.color,
               borderRadius: 2,
             }}
           />
         );
-        contextLabel = selectedContext.name;
+        contextLabel = selectedContext.meta.title || selectedContext.name;
         break;
     }
   }
@@ -104,14 +107,7 @@ export const Context: FC<ContextProps> = (props: ContextProps) => {
     <div style={{ position: 'relative' }}>
       <TrayButtonStyle ref={contextButtonRef} style={style} paddingLeft="4px">
         {avatar}
-        <Text
-          ml="8px"
-          variant={
-            selectedContext && selectedContext.type === 'ship'
-              ? 'patp'
-              : 'inherit'
-          }
-        >
+        <Text ml="8px" variant={'inherit'}>
           {!selectedContext ? 'No context selected' : contextLabel}
           <Icons.ExpandMore ml="6px" />
         </Text>
@@ -149,6 +145,7 @@ export const Context: FC<ContextProps> = (props: ContextProps) => {
                   <Flex alignItems="center">
                     <Sigil
                       patp={context.name}
+                      avatar={context.meta.avatar}
                       clickable
                       size={16}
                       borderRadiusOverride="2px"
@@ -163,7 +160,7 @@ export const Context: FC<ContextProps> = (props: ContextProps) => {
                       ml="8px"
                       variant="inherit"
                     >
-                      {context.name}
+                      {context.meta.nickname || context.name}
                       {/* TODO add notification */}
                       {/* <Icons.ExpandMore ml="6px" /> */}
                     </Text>
@@ -174,7 +171,7 @@ export const Context: FC<ContextProps> = (props: ContextProps) => {
                       style={{ borderRadius: 2 }}
                       height="16px"
                       width="16px"
-                      src={context.avatar}
+                      src={context.meta.picture}
                     />
 
                     <Text
@@ -186,7 +183,7 @@ export const Context: FC<ContextProps> = (props: ContextProps) => {
                       ml="8px"
                       variant="inherit"
                     >
-                      {context.name}
+                      {context.meta.title || context.name}
                       {/* TODO add notification */}
                       {/* <Icons.ExpandMore ml="6px" /> */}
                     </Text>

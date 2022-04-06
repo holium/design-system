@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { sigil, reactRenderer } from '@tlon/sigil-js';
 import { Menu, useMenu } from '../..';
-import { SigilStyle } from './Sigil.styles';
+import { AvatarWrapper, SigilStyle } from './Sigil.styles';
 
 export type SigilProps = {
   patp: string;
+  avatar?: string;
+  nickname?: string;
   size: number;
   simple?: boolean;
   contextMenu?: React.ReactNode;
@@ -14,7 +16,7 @@ export type SigilProps = {
 };
 
 export const Sigil: any = (props: SigilProps) => {
-  const { clickable, borderRadiusOverride, contextMenu } = props;
+  const { avatar, clickable, borderRadiusOverride, contextMenu } = props;
   const sigilRef = React.useRef();
   let anchorPoint: any, show: boolean, setShow: any;
   const menuWidth = 180;
@@ -31,9 +33,29 @@ export const Sigil: any = (props: SigilProps) => {
   }
   const sigilSize = props.size / 2;
   const horizontalPadding = sigilSize / 2;
-  const isValid = props.patp.split('-').length <= 2;
-  return (
-    <>
+  let element: React.ReactNode;
+  if (avatar) {
+    element = (
+      <AvatarWrapper
+        id="ship"
+        tabIndex={clickable ? 0 : -1}
+        ref={sigilRef}
+        style={{ borderRadius: borderRadiusOverride || 4 }}
+        clickable={clickable}
+        onClick={(evt: any) => {
+          evt.preventDefault();
+          evt.currentTarget.blur();
+          clickable && !show && setShow && setShow(true);
+        }}
+        active={clickable && show}
+        borderRadiusOverride={borderRadiusOverride}
+      >
+        <img height={props.size} width={props.size} src={avatar} />
+      </AvatarWrapper>
+    );
+  } else {
+    const isValid = props.patp.split('-').length <= 2;
+    element = (
       <SigilStyle
         id="ship"
         tabIndex={clickable ? 0 : -1}
@@ -69,10 +91,14 @@ export const Sigil: any = (props: SigilProps) => {
               width: props.size / 2,
               height: props.size / 2,
             }}
-          ></div>
+          />
         )}
       </SigilStyle>
-
+    );
+  }
+  return (
+    <>
+      {element}
       <Menu
         id={`${props.patp}-user-menu`}
         style={{

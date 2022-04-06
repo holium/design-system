@@ -25,6 +25,8 @@ type AppWindowProps = {
   };
   ship: {
     patp: string;
+    avatar?: string;
+    nickname?: string;
     color: string;
     contextMenu?: React.ReactNode;
   };
@@ -99,6 +101,7 @@ export const AppWindow: FC<AppWindowProps> = (props: AppWindowProps) => {
           <Box justifyContent="flex-end" ml={12}>
             <Sigil
               clickable
+              avatar={ship.avatar}
               patp={ship.patp}
               size={24}
               contextMenu={ship.contextMenu}

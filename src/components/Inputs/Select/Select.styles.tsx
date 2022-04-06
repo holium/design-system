@@ -28,9 +28,8 @@ export type SelectProps = SpaceProps &
     gray?: boolean;
   };
 
-export const SelectWrapper = styled.div`
+export const SelectWrapper = styled.div<SelectProps>`
   width: 100%;
-  /* display: block; */
   input {
     cursor: pointer;
     &:hover {
