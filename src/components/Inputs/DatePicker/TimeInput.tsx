@@ -180,7 +180,7 @@ export const TimeInput: FC<DayProps> = ({
           ref={amPmRef}
           name="amPm"
           ml="8px"
-          style={{ width: '60px' }}
+          style={{ width: '60px', background: 'transparent' }}
           defaultValue={timeObj.amPm}
           // onKeyPress={handleKeyPress} todo make tab+enter work
         >

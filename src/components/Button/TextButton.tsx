@@ -11,11 +11,11 @@ interface IProps {
 export const TextButton = styled(styled.button`
   font-family: ${(props: any) => props.theme.fonts.body};
   font-style: normal;
-  font-weight: 'medium';
+  font-weight: medium;
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
-  height: 30px;
+  height: 26px;
   border-radius: 3px;
   text-decoration: none;
   cursor: pointer;

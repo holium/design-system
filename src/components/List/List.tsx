@@ -27,7 +27,7 @@ export const VirtualizedList = (props: VirtualizedListProps) => {
   }
 
   return (
-    <div className="scroll" style={{ overflowY: 'scroll', ...style }}>
+    <div className="scroll" style={{ ...style }}>
       <div
         className="inner"
         style={{ position: 'relative', height: 'inherit' }}

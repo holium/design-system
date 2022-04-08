@@ -50,7 +50,12 @@ export const Sigil: any = (props: SigilProps) => {
         active={clickable && show}
         borderRadiusOverride={borderRadiusOverride}
       >
-        <img height={props.size} width={props.size} src={avatar} />
+        <img
+          style={{ borderRadius: borderRadiusOverride || 4 }}
+          height={props.size}
+          width={props.size}
+          src={avatar}
+        />
       </AvatarWrapper>
     );
   } else {

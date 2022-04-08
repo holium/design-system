@@ -20,7 +20,7 @@ import {
 import Month from './Month';
 import { Grid, Box, Flex, IconButton } from '../..';
 import DatepickerContext from './helpers/datePickerContext';
-import { Icons, TextButton } from '../../..';
+import { Icons } from '../../..';
 import { Divider } from '../../shared-styles';
 import TimeInput from './TimeInput';
 // import { toISOLocal } from './helpers/timezone';
@@ -62,7 +62,7 @@ export const DateTimePicker = (
     initialVisibleMonth,
     vertical = false,
     rtl = false,
-    showResetDates = true,
+    // showResetDates = true,
     exactMinBookingDays = false,
     isDateBlocked = () => false,
     minBookingDays = 1,
@@ -80,7 +80,7 @@ export const DateTimePicker = (
     isDateHovered,
     firstDayOfWeek,
     onDateSelect,
-    onResetDates,
+    // onResetDates,
     goToPreviousMonths,
     goToNextMonths,
     numberOfMonths,
@@ -194,11 +194,11 @@ export const DateTimePicker = (
               onDateSelect(startDate);
             }}
           />
-          {showResetDates && (
+          {/* {showResetDates && (
             <Flex flex="1" justifyContent="flex-end" m="2px 8px">
               <TextButton onClick={onResetDates}>Reset</TextButton>
             </Flex>
-          )}
+          )} */}
         </Box>
         <Flex alignItems="center">
           <>
