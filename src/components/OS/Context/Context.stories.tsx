@@ -14,18 +14,24 @@ const availableContexts = [
     name: '~lomder-librun',
     meta: {
       color: '#ff810a',
+      picture: null,
     },
   },
   {
     type: 'group',
     name: 'Holium',
-    avatar: 'https://lomder-librun.sfo3.digitaloceanspaces.com/dev/Holium.png',
+    meta: {
+      picture:
+        'https://lomder-librun.sfo3.digitaloceanspaces.com/dev/Holium.png',
+    },
   },
   {
     type: 'group',
     name: 'The Collapse',
-    avatar:
-      'https://lomder-librun.sfo3.digitaloceanspaces.com/dev/roman-empire-wallpaper.jpeg',
+    meta: {
+      picture:
+        'https://lomder-librun.sfo3.digitaloceanspaces.com/dev/roman-empire-wallpaper.jpeg',
+    },
   },
 ];
 
@@ -38,7 +44,7 @@ const Template = (args?: any) => (
       justifyContent: 'flex-end',
     }}
   >
-    <Context {...args} />
+    <Context {...args} onContextClick={() => {}} />
   </div>
 );
 
@@ -58,6 +64,7 @@ Ship.args = {
     },
   },
   availableContexts,
+  onContextClick: () => {},
 };
 
 export const Group = Template.bind({});
@@ -65,8 +72,11 @@ Group.args = {
   selectedContext: {
     type: 'group',
     name: 'The Collapse',
-    avatar:
-      'https://lomder-librun.sfo3.digitaloceanspaces.com/dev/roman-empire-wallpaper.jpeg',
+    meta: {
+      picture:
+        'https://lomder-librun.sfo3.digitaloceanspaces.com/dev/roman-empire-wallpaper.jpeg',
+    },
   },
   availableContexts,
+  onContextClick: () => {},
 };

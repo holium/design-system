@@ -19,7 +19,7 @@ export const Header: FC<HeaderProps> = (props: Partial<HeaderProps>) => {
       <Flex
         width="100%"
         flexDirection="row"
-        mb={isCustomTitle ? '4px' : '12px'}
+        mb={!isCustomTitle ? '8px' : '12px'}
         alignItems="center"
         justifyContent="space-between"
       >
@@ -30,6 +30,7 @@ export const Header: FC<HeaderProps> = (props: Partial<HeaderProps>) => {
                 mb={isCustomTitle ? '1px' : '4px'}
                 style={{ opacity: 0.7, cursor: onBack ? 'pointer' : 'default' }}
                 variant={subtitle.patp ? 'patp' : 'h6'}
+                fontSize={2}
                 fontWeight={500}
                 onClick={onBack}
               >

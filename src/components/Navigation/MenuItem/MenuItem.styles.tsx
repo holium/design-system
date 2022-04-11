@@ -58,6 +58,7 @@ export const MenuItemStyle: any = styled(styled.li`
   cursor: pointer;
   pointer-events: auto;
 
+  /* Not disabled */
   ${(props: StyleProps) =>
     !props.disabled &&
     css`
@@ -85,18 +86,7 @@ export const MenuItemStyle: any = styled(styled.li`
       }
     `}}
 
-  /* Disabled */
-  ${(props: StyleProps) =>
-    props.disabled &&
-    css`
-      -webkit-text-fill-color: currentColor; /* set text fill to current color for safari */
-      color: ${(props) => props.theme.colors.text.disabled};
-      border-color: ${(props) => props.theme.colors.ui.disabled};
-      opacity: 0.7;
-      cursor: default;
-      background: transparent;
-    `};
-  /* Disabled */
+  /* Selected */
   ${(props: StyleProps) =>
     props.selected &&
     css`
@@ -106,6 +96,22 @@ export const MenuItemStyle: any = styled(styled.li`
       background: transparent;
     `};
   ${selectableFocus}
+
+   /* Disabled */
+  ${(props: StyleProps) =>
+    props.disabled &&
+    css`
+      -webkit-text-fill-color: currentColor; /* set text fill to current color for safari */
+      color: ${(props) => props.theme.colors.text.disabled};
+      border-color: ${(props) => props.theme.colors.ui.disabled};
+      opacity: 0.7;
+      cursor: default;
+      &:focus {
+        outline: none;
+        border-color: transparent;
+      }
+      background: transparent;
+    `};
 `)<StyleProps>(compose(space, color, layout, flexbox, border, position));
 
 export const ChildrenBox = styled(styled.div`

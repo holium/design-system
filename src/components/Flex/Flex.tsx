@@ -40,3 +40,7 @@ export const Flex: any = styled(Box)<FlexProps>(
   },
   compose(space, layout, flexbox, position)
 );
+
+Flex.defaultProps = {
+  gap: 0,
+};

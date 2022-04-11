@@ -11,7 +11,7 @@ interface IProps {
 export const TextButton = styled(styled.button`
   font-family: ${(props: any) => props.theme.fonts.body};
   font-style: normal;
-  font-weight: medium;
+  font-weight: 500;
   display: inline-flex;
   flex-direction: column;
   justify-content: center;

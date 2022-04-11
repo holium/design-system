@@ -72,9 +72,9 @@ export const elevations = {
 };
 
 export const containers = {
-  rounderBorderRadius: 9,
+  rounderBorderRadius: 8,
   outerBorderRadius: 6,
-  innerBorderRadius: 3,
+  innerBorderRadius: 4,
 };
 
 // TODO restructure to generate type in an elegant way

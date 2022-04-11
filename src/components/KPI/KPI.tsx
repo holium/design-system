@@ -33,3 +33,5 @@ export const KPI: FC<KPIProps> = (props: KPIProps) => {
     </Flex>
   );
 };
+
+export default { KPI };

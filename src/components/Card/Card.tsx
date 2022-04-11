@@ -20,6 +20,7 @@ type CardProps = SpaceProps &
   PositionProps & {
     ref?: any;
     selectable?: boolean;
+    borderThickness?: number;
     elevation?: 'none' | 'one' | 'two' | 'three' | 'lifted';
     theme?: ThemeType;
   };
@@ -43,9 +44,10 @@ export const CardInner = styled(styled.div`
 export const Card = styled(styled.div`
   color: ${(props) => props.theme.colors.text.primary};
   background: ${(props) => props.theme.colors.bg.secondary};
-  border: 1px solid ${(props) => props.theme.colors.ui.input.borderColor};
+  border: ${(props: CardProps) =>
+    `${props.borderThickness}px solid ${props.theme.colors.ui.input.borderColor}`};
   transition: 0.2s ease;
-  border-radius: ${(props) => props.theme.containers.outerBorderRadius}px;
+  border-radius: ${(props) => props.theme.containers.rounderBorderRadius}px;
   box-shadow: ${(props: CardProps) =>
     props.theme.elevations[props.elevation || 'one']};
   -webkit-font-smoothing: antialiased;
@@ -66,4 +68,5 @@ export const Card = styled(styled.div`
 
 Card.defaultProps = {
   padding: '5px',
+  borderThickness: 1,
 };

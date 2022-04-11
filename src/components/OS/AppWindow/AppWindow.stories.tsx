@@ -10,7 +10,7 @@ export default {
 
 const Template = (args?: any) => (
   <div style={{ width: '100%' }}>
-    <AppWindow {...args} />
+    <AppWindow {...args} onContextClick={() => {}} />
   </div>
 );
 
@@ -50,14 +50,18 @@ Standalone.args = {
     {
       type: 'group',
       name: 'Holium',
-      avatar:
-        'https://lomder-librun.sfo3.digitaloceanspaces.com/dev/Holium.png',
+      meta: {
+        picture:
+          'https://lomder-librun.sfo3.digitaloceanspaces.com/dev/Holium.png',
+      },
     },
     {
       type: 'group',
       name: 'The Collapse',
-      avatar:
-        'https://lomder-librun.sfo3.digitaloceanspaces.com/dev/roman-empire-wallpaper.jpeg',
+      meta: {
+        picture:
+          'https://lomder-librun.sfo3.digitaloceanspaces.com/dev/roman-empire-wallpaper.jpeg',
+      },
     },
   ],
 };

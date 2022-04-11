@@ -48,6 +48,13 @@ export const MenuItem: any = (props: Partial<MenuItemProps>) => {
       data-prevent-context-close={disabled}
       disabled={disabled}
       selected={selected}
+      onKeyPress={(evt: any) => {
+        const key = evt.keyCode || evt.which;
+        if (key === 13) {
+          evt.preventDefault(); // Ensure it is only this code that runs
+          onClick(evt);
+        }
+      }}
       onClick={(evt: any) => {
         if (!disabled) {
           onClick(evt);

@@ -43,6 +43,12 @@ export const TrayButtonStyle = styled(
     user-select: none;
     cursor: pointer;
     transition: ${(props: TrayButtonStyleProps) => props.theme.transition};
+    /* ${selectableFocus} */
+    outline: none;
+    div {
+      pointer-events: none;
+    }
+    /* pointer-events: all; */
     background: ${(props: TrayButtonStyleProps) =>
       props.noRestingBg
         ? 'transparent'
@@ -62,7 +68,6 @@ export const TrayButtonStyle = styled(
       transition: ${(props: TrayButtonStyleProps) =>
         props.baseColor || props.theme.transition};
     }
-    ${selectableFocus}
   `
 )<TrayButtonStyleProps>(
   {

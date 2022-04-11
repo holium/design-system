@@ -43,7 +43,7 @@ export const ListHeader: FC<ListHeaderProps> = (
           flexDirection="row"
           alignItems="center"
           justifyContent="flex-start"
-          style={{ gap: '8px' }}
+          gap={8}
         >
           {options?.map((option: OptionType) => (
             <Styled.OptionButton
@@ -61,3 +61,5 @@ export const ListHeader: FC<ListHeaderProps> = (
     </Header>
   );
 };
+
+export default { ListHeader };
