@@ -14,6 +14,7 @@ import {
   BorderProps,
   PositionProps,
 } from 'styled-system';
+import { rgba } from 'polished';
 import type { ThemeType } from '../../../theme';
 import { Flex } from '../../';
 
@@ -50,7 +51,8 @@ export const AppWindowTitleStyle = styled(
     font-weight: 600;
     height: 32px;
     margin-right: 16px;
-    color: ${(props: AppWindowProps) => props.theme.colors.text.secondary};
+    color: ${(props: AppWindowProps) =>
+      rgba(props.theme.colors.text.secondary, 0.95)};
     ${(props: AppWindowProps) =>
       props.clickable &&
       css`

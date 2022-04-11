@@ -49,6 +49,8 @@ import { default as ChatLine } from './chat-new';
 import { default as Apps2 } from './apps-2';
 import { default as BookLine } from './book-line';
 import { default as GovernanceLine } from './governance-line';
+import { default as AppBallotSM } from './app-ballot-sm';
+
 import { default as NewspaperLine } from './newspaper-line';
 import { default as SafeLine } from './safe-line';
 import { default as TeamLine } from './team-line';
@@ -72,6 +74,7 @@ export type IconProps = SpaceProps & ColorProps & LayoutProps & TypographyProps;
 
 export const Icons: any = {
   Apps,
+  AppBallotSM,
   AddUser,
   ArrowLeft,
   ArrowRight,
