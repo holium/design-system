@@ -13,7 +13,7 @@ export * from './Urbit';
 export * from './Spinner';
 // export * from "./Stack";
 export * from './Tab';
-
+export * from './Notification';
 export * from './Card';
 export * from './Tooltip';
 export * from './Button';

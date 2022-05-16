@@ -11,13 +11,13 @@ export default {
 // @ts-ignore
 const Template: Story = (args: Partial<NotificationProps>) => (
   <Flex style={{ gap: 4 }} flexDirection="column">
-    <Notification colour={args.colour}>1234567</Notification>
-    <Notification colour={args.colour}>4321</Notification>
-    <Notification colour={args.colour}>4</Notification>
+    <Notification colour={args.customColor}>1234567</Notification>
+    <Notification colour={args.customColor}>4321</Notification>
+    <Notification colour={args.customColor}>4</Notification>
   </Flex>
 );
 
 export const Default = Template.bind({});
 Default.args = {
-  colour: '#4e9efd',
+  customColor: '#4e9efd',
 };

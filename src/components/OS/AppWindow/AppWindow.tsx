@@ -58,6 +58,7 @@ export const AppWindow: FC<AppWindowProps> = (props: AppWindowProps) => {
     isStandalone,
     children,
   } = props;
+
   return (
     <AppWindowStyle isStandalone={isStandalone}>
       <Flex>

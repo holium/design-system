@@ -4,6 +4,7 @@ import Styled from './ListHeader.styles';
 // import { OptionButton } from './ListHeader.styles';
 // export { HeaderButton as ListHeaderButton } from './ListHeader.styles';
 import { Header, HeaderProps } from './Header';
+import Grid2 from '../Grid2';
 
 export type ListHeaderProps = {
   selectedOption?: string;
@@ -33,9 +34,9 @@ export const ListHeader: FC<ListHeaderProps> = (
       onBack={onBack}
     >
       <Flex
-        width="100%"
+        gap={8}
+        flexWrap="wrap"
         flexDirection="row"
-        mb={1}
         alignItems="center"
         justifyContent="space-between"
       >

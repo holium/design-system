@@ -26,7 +26,7 @@ export const AvatarWrapper = styled(styled.div`
   -moz-appearance: none;
   border: none;
   outline: none;
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
@@ -57,7 +57,7 @@ export const SigilStyle = styled(
     -moz-appearance: none;
     border: none;
     outline: none;
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     justify-content: center;
     position: relative;
@@ -68,6 +68,7 @@ export const SigilStyle = styled(
     box-sizing: border-box; /* Opera/IE 8+ */
     overflow: visible;
     height: ${(props) => props.sigilSize}px;
+    width: ${(props) => props.sigilSize}px;
     background-color: ${(props) => props.sigilColor};
     border-width: 0px;
     border-radius: ${(props) => props.borderRadiusOverride || '4px'};

@@ -31,7 +31,7 @@ export const BreadcrumbNav: FC<BreadcrumbNavProps> = (
   const { crumbs, onBack } = props;
   return (
     <BreadcrumbNavStyle>
-      <IconButton tabIndex={-1} mr={3} onClick={() => onBack()}>
+      <IconButton tabIndex={-1} mr={3} onClick={() => onBack && onBack()}>
         <Icons.ArrowLeft />
       </IconButton>
       {crumbs.map((crumb: CrumbType, index: number) => {
@@ -59,7 +59,7 @@ export const BreadcrumbNav: FC<BreadcrumbNavProps> = (
               }}
               variant="body"
               mr={2}
-              onClick={() => crumb.onClick()}
+              onClick={() => crumb.onClick && crumb.onClick()}
             >
               {crumb.label}
             </Text>

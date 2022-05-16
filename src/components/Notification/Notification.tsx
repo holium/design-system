@@ -1,27 +1,31 @@
 import * as React from 'react';
-import { Text } from '../..';
 import { NotificationStyle } from './Notification.styles';
 
 export type NotificationProps = {
-  colour?: string;
+  hasBorder?: boolean;
+  customColor?: string;
   children?: string;
 };
 
 export const Notification: any = (props: NotificationProps) => {
   return (
-    <NotificationStyle colour={props.colour}>
-      <Text
+    <NotificationStyle
+      hasBorder={props.hasBorder}
+      customColor={props.customColor}
+    >
+      {/* <Text
         variant={props.children.length > 2 ? 'body' : 'hint'}
         fontSize={1}
         color={props.colour}
-      >
-        {props.children}
-      </Text>
+      > */}
+      {props.children}
+      {/* </Text> */}
     </NotificationStyle>
   );
 };
 
 Notification.defaultProps = {
-  color: '#4E9EFD',
+  customColor: '#4E9EFD',
+  hasBorder: false,
   children: '1',
 };
