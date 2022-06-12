@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Flex } from '../../';
 import { MenuWrapper } from './Menu.styles';
 
 interface IProps {

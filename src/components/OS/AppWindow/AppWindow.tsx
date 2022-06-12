@@ -6,7 +6,7 @@ import {
   AppWindowTitleStyle,
 } from './AppWindow.styles';
 import { Context, ContextType } from '../Context';
-import { SubRouteNav } from './SubRouteNav';
+import { SubRouteNav, SubRouteWrapper } from './SubRouteNav';
 
 type SubRouteType = {
   icon?: any;
@@ -16,6 +16,7 @@ type SubRouteType = {
 };
 
 type AppWindowProps = {
+  isMobile?: boolean;
   style?: any;
   app: {
     icon: any;
@@ -56,6 +57,7 @@ export const AppWindow: FC<AppWindowProps> = (props: AppWindowProps) => {
     onContextClick,
     loadingContext,
     isStandalone,
+    isMobile,
     children,
   } = props;
 
@@ -64,15 +66,17 @@ export const AppWindow: FC<AppWindowProps> = (props: AppWindowProps) => {
       <Flex>
         <AppWindowTitleBar style={style}>
           <Box alignItems="center">
-            <AppWindowTitleStyle
-              clickable={typeof onHomeClick != 'undefined'}
-              onClick={onHomeClick}
-            >
-              <Box mr={3} style={{ borderRadius: 4 }}>
-                {app.icon}
-              </Box>
-              <Box>{app.name}</Box>
-            </AppWindowTitleStyle>
+            {!isMobile && (
+              <AppWindowTitleStyle
+                clickable={typeof onHomeClick != 'undefined'}
+                onClick={onHomeClick}
+              >
+                <Box mr={3} style={{ borderRadius: 4 }}>
+                  {app.icon}
+                </Box>
+                <Box>{app.name}</Box>
+              </AppWindowTitleStyle>
+            )}
             <Context
               loading={loadingContext}
               menuOrientation="bottom"
@@ -83,32 +87,35 @@ export const AppWindow: FC<AppWindowProps> = (props: AppWindowProps) => {
               // @ts-ignore
               availableContexts={contexts}
             />
-
-            {subRoutes.map((subroute: SubRouteType) => (
-              <SubRouteNav
-                key={subroute.uri}
-                name={subroute.name}
-                path={subroute.uri}
-                color={app.color}
-                selected={selectedRouteUri === subroute.nav}
-                onClick={(evt: any) => {
-                  evt.preventDefault();
-                  evt.currentTarget.blur();
-                  onRouteClick(subroute);
-                }}
+            <SubRouteWrapper isMobile={isMobile}>
+              {subRoutes.map((subroute: SubRouteType) => (
+                <SubRouteNav
+                  key={subroute.uri}
+                  name={subroute.name}
+                  path={subroute.uri}
+                  color={app.color}
+                  selected={selectedRouteUri === subroute.nav}
+                  onClick={(evt: any) => {
+                    evt.preventDefault();
+                    evt.currentTarget.blur();
+                    onRouteClick(subroute);
+                  }}
+                />
+              ))}
+            </SubRouteWrapper>
+          </Box>
+          {!isMobile && (
+            <Box justifyContent="flex-end" ml={12}>
+              <Sigil
+                clickable
+                avatar={ship.avatar}
+                patp={ship.patp}
+                size={24}
+                contextMenu={ship.contextMenu}
+                color={ship.color ? [ship.color, 'white'] : ['black', 'white']}
               />
-            ))}
-          </Box>
-          <Box justifyContent="flex-end" ml={12}>
-            <Sigil
-              clickable
-              avatar={ship.avatar}
-              patp={ship.patp}
-              size={24}
-              contextMenu={ship.contextMenu}
-              color={ship.color ? [ship.color, 'white'] : ['black', 'white']}
-            />
-          </Box>
+            </Box>
+          )}
         </AppWindowTitleBar>
       </Flex>
       {children}

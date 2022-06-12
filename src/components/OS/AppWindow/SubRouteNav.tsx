@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
-import styled from 'styled-components';
+import React, { FC, useState } from 'react';
+import styled, { css } from 'styled-components';
 import { darken } from 'polished';
 import {
   compose,
@@ -15,6 +15,9 @@ import {
 } from 'styled-system';
 import type { ThemeType } from '../../../theme';
 import { selectableFocus } from '../../shared-styles';
+import { IconButton } from '../../Button';
+import { Menu } from '../../Navigation';
+import { Icons } from '../../Icons';
 
 export type SubRouteStyleProps = SpaceProps &
   ColorProps &
@@ -86,4 +89,78 @@ export const SubRouteNav: FC<SubRouteNavProps> = (props: SubRouteNavProps) => {
       {name}
     </SubRouteStyle>
   );
+};
+
+// Handles mobile responsive navigation
+export type SubRouteWrapperProps = {
+  isMobile: boolean;
+  children?: any;
+};
+
+export type SubRouteWrapperStyleProps = SpaceProps &
+  ColorProps &
+  LayoutProps &
+  FlexboxProps &
+  BorderProps &
+  PositionProps &
+  SubRouteWrapperProps & {
+    theme: ThemeType;
+  };
+
+export const SubRouteWrapperStyle = styled(
+  styled.div`
+    ${(props: SubRouteWrapperStyleProps) =>
+      props.isMobile &&
+      css`
+        flex-direction: column;
+        position: absolute;
+        right: 12px;
+        top: 10px;
+
+        ${SubRouteStyle} {
+          height: 36px;
+          margin-right: 8px;
+          font-size: 15px;
+        }
+      `}
+  `
+)<SubRouteWrapperStyleProps>({}, compose(space, layout, typography));
+
+export const SubRouteWrapper: FC<SubRouteWrapperProps> = (
+  props: SubRouteWrapperProps
+) => {
+  const { isMobile, children } = props;
+  const [isNavOpen, setIsNavOpen] = useState(false);
+
+  if (isMobile) {
+    return (
+      <SubRouteWrapperStyle isMobile={isMobile}>
+        <IconButton
+          style={{ outline: 'none' }}
+          size={28}
+          onClick={() => setIsNavOpen(true)}
+        >
+          <Icons.Apps />
+        </IconButton>
+        <Menu
+          isOpen={isNavOpen}
+          style={{
+            zIndex: 6,
+            paddingTop: 8,
+            paddingBottom: 8,
+            right: 0,
+            gap: 6,
+            width: 150,
+          }}
+          onClose={() => {
+            setIsNavOpen(false);
+          }}
+        >
+          {children}
+        </Menu>
+      </SubRouteWrapperStyle>
+    );
+  } else {
+    return children;
+  }
 };

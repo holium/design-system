@@ -66,7 +66,7 @@ const Sidebar = (props: Partial<PageProps>) => {
 };
 
 const CenteredPane = (
-  props: Partial<PageProps> & { width?: number; style?: any }
+  props: Partial<PageProps> & { width?: number | string; style?: any }
 ) => {
   return (
     <Fill style={props.style}>

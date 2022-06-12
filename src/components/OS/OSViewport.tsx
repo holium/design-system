@@ -35,7 +35,5 @@ export const OSViewPort = styled(styled.div`
       transition: filter ${props.theme.transition};
     `}
   background: ${(props: OSViewPortProps) =>
-    props.bg
-      ? props.theme.colors.bg[props.bg]
-      : props.theme.colors.bg.secondary};
+    props.bg ? props.theme.colors.bg[props.bg] : 'transparent'};
 `)<OSViewPortProps>(compose(background));

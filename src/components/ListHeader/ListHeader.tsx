@@ -4,7 +4,6 @@ import Styled from './ListHeader.styles';
 // import { OptionButton } from './ListHeader.styles';
 // export { HeaderButton as ListHeaderButton } from './ListHeader.styles';
 import { Header, HeaderProps } from './Header';
-import Grid2 from '../Grid2';
 
 export type ListHeaderProps = {
   selectedOption?: string;

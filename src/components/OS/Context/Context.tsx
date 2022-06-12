@@ -105,7 +105,11 @@ export const Context: FC<ContextProps> = (props: ContextProps) => {
 
   return (
     <div style={{ position: 'relative' }}>
-      <TrayButtonStyle ref={contextButtonRef} style={style} paddingLeft="4px">
+      <TrayButtonStyle
+        ref={contextButtonRef}
+        style={{ ...style, width: 'max-content' }}
+        paddingLeft="4px"
+      >
         {avatar}
         <Text ml="8px" variant={'inherit'}>
           {!selectedContext ? 'No context selected' : contextLabel}
@@ -123,6 +127,7 @@ export const Context: FC<ContextProps> = (props: ContextProps) => {
             },
             padding: '8px 2px',
             minWidth: 225,
+            zIndex: 6,
             visibility: show ? 'visible' : 'hidden',
           }}
           isOpen={show}
