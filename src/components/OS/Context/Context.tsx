@@ -107,10 +107,10 @@ export const Context: FC<ContextProps> = (props: ContextProps) => {
     <div style={{ position: 'relative' }}>
       <TrayButtonStyle
         ref={contextButtonRef}
-        onClick={(evt: any) => {
-          evt.stopPropagation();
-          show && setShow(false);
-        }}
+        // onClick={(evt: any) => {
+        //   evt.stopPropagation();
+        //   show && setShow(false);
+        // }}
         style={{ ...style, width: 'max-content' }}
         paddingLeft="4px"
       >
