@@ -62,6 +62,8 @@ import { default as AngleRight } from './angle-right';
 import { default as ArrowLeft } from './arrow-left';
 import { default as ArrowRight } from './arrow-right';
 import { default as Percentage } from './percentage';
+import { default as TerminalLine } from './terminal-line';
+import { default as ListOptions } from './list-options';
 
 // Blockchains
 import { default as Ethereum } from './ethereum';
@@ -125,4 +127,6 @@ export const Icons: any = {
   Ethereum,
   Uqbar,
   Percentage,
+  TerminalLine,
+  ListOptions,
 };
