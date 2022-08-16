@@ -64,6 +64,9 @@ import { default as ArrowRight } from './arrow-right';
 import { default as Percentage } from './percentage';
 import { default as TerminalLine } from './terminal-line';
 import { default as ListOptions } from './list-options';
+//
+import { default as Participants } from './participants';
+import { default as Leave } from './leave';
 
 // Blockchains
 import { default as Ethereum } from './ethereum';
@@ -129,4 +132,6 @@ export const Icons: any = {
   Percentage,
   TerminalLine,
   ListOptions,
+  Participants,
+  Leave,
 };

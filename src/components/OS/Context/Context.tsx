@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useCallback, useMemo, useState } from 'react';
 import { Flex, Sigil, Text, Icons, useMenu, Menu } from '../../..';
 import { MenuItem, MenuOrientation } from '../../Navigation';
 import { Spinner } from '../../Spinner';
@@ -40,168 +40,179 @@ export const Context: FC<ContextProps> = (props: ContextProps) => {
     menuOrientation,
     onContextClick,
   } = props;
-  const contextButtonRef = React.useRef();
-  let show: boolean, setShow: any;
+  // const contextButtonRef = React.useRef();
+  const [show, setShow] = useState(false);
+  // let show: boolean, setShow: any;
 
-  let config = useMenu(contextButtonRef, {
-    orientation: menuOrientation,
-    padding: 6,
-    // menuWidth,
-  });
-  show = config.show;
-  setShow = config.setShow;
+  // let config = useMenu(contextButtonRef, {
+  //   orientation: menuOrientation,
+  //   padding: 6,
+  //   manuallyOpen: true,
+  //   // menuWidth,
+  // });
+  // show = config.show;
+  // setShow = config.setShow;
 
-  if (loading) {
+  const button = useMemo(() => {
+    if (loading) {
+      return (
+        <TrayButtonStyle
+          tabIndex={0}
+          style={{ width: 60, justifyContent: 'center', alignItems: 'center' }}
+          // ref={contextButtonRef}
+          paddingLeft="4px"
+        >
+          <Spinner ml={1} size={0} />
+        </TrayButtonStyle>
+      );
+    }
+    let contextLabel = 'No context selected';
+    let avatar = null;
+    if (selectedContext) {
+      switch (selectedContext.type) {
+        case 'ship':
+          avatar = (
+            <Sigil
+              patp={selectedContext.name}
+              avatar={selectedContext.meta.avatar}
+              clickable={false}
+              size={16}
+              borderRadiusOverride="2px"
+              color={[selectedContext.meta.color || '#000000', 'white']}
+            />
+          );
+          contextLabel = selectedContext.meta.nickname || selectedContext.name;
+          break;
+        case 'group':
+          avatar = selectedContext.meta.picture ? (
+            <img
+              style={{ borderRadius: 2 }}
+              height="16px"
+              width="16px"
+              src={selectedContext.meta.picture}
+            />
+          ) : (
+            <div
+              style={{
+                height: 16,
+                width: 16,
+                background: selectedContext.meta.color,
+                borderRadius: 2,
+              }}
+            />
+          );
+          contextLabel = selectedContext.meta.title || selectedContext.name;
+          break;
+      }
+    }
     return (
       <TrayButtonStyle
-        tabIndex={0}
-        style={{ width: 60, justifyContent: 'center', alignItems: 'center' }}
-        ref={contextButtonRef}
-        paddingLeft="4px"
-      >
-        <Spinner ml={1} size={0} />
-      </TrayButtonStyle>
-    );
-  }
-  let contextLabel = 'No context selected';
-  let avatar = null;
-  if (selectedContext) {
-    switch (selectedContext.type) {
-      case 'ship':
-        avatar = (
-          <Sigil
-            patp={selectedContext.name}
-            avatar={selectedContext.meta.avatar}
-            clickable={false}
-            size={16}
-            borderRadiusOverride="2px"
-            color={[selectedContext.meta.color || '#000000', 'white']}
-          />
-        );
-        contextLabel = selectedContext.meta.nickname || selectedContext.name;
-        break;
-      case 'group':
-        avatar = selectedContext.meta.picture ? (
-          <img
-            style={{ borderRadius: 2 }}
-            height="16px"
-            width="16px"
-            src={selectedContext.meta.picture}
-          />
-        ) : (
-          <div
-            style={{
-              height: 16,
-              width: 16,
-              background: selectedContext.meta.color,
-              borderRadius: 2,
-            }}
-          />
-        );
-        contextLabel = selectedContext.meta.title || selectedContext.name;
-        break;
-    }
-  }
-
-  return (
-    <div style={{ position: 'relative' }}>
-      <TrayButtonStyle
-        ref={contextButtonRef}
-        // onClick={(evt: any) => {
-        //   evt.stopPropagation();
-        //   show && setShow(false);
-        // }}
+        // ref={contextButtonRef}
+        onClick={(evt: any) => {
+          // evt.stopPropagation();
+          show ? setShow(false) : setShow(true);
+        }}
         style={{ ...style, width: 'max-content' }}
         paddingLeft="4px"
       >
         {avatar}
-        <Text ml="8px" variant={'inherit'}>
+        <Text style={{ pointerEvents: 'none' }} ml="8px" variant={'inherit'}>
           {!selectedContext ? 'No context selected' : contextLabel}
           <Icons.ExpandMore ml="6px" />
         </Text>
       </TrayButtonStyle>
-      {
-        <Menu
-          id="context-menu"
-          style={{
-            ...{
-              ...(menuOrientation === 'top'
-                ? { bottom: 24 + 2 }
-                : { top: 24 + 2 }),
-            },
-            padding: '8px 2px',
-            minWidth: 225,
-            zIndex: 6,
-            visibility: show ? 'visible' : 'hidden',
-          }}
-          isOpen={show}
-          onClose={() => {
-            setShow(false);
-          }}
-        >
-          {customMenu ||
-            availableContexts.map((context: ContextType, i: number) => (
-              <MenuItem
-                key={`context-${i}`}
-                style={{ padding: '8px 8px' }}
-                type="neutral"
-                onClick={() => {
-                  onContextClick(context);
-                  setShow(false);
-                }}
-              >
-                {context.type === 'ship' ? (
-                  <Flex alignItems="center">
-                    <Sigil
-                      patp={context.name}
-                      avatar={context.meta.avatar}
-                      clickable
-                      size={16}
-                      borderRadiusOverride="2px"
-                      color={[context.meta.color, 'white']}
-                    />
-                    <Text
-                      style={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                      }}
-                      ml="8px"
-                      variant="inherit"
-                    >
-                      {context.meta.nickname || context.name}
-                      {/* TODO add notification */}
-                      {/* <Icons.ExpandMore ml="6px" /> */}
-                    </Text>
-                  </Flex>
-                ) : (
-                  <Flex style={{ width: '100%', flex: 1 }}>
-                    <img
-                      style={{ borderRadius: 2 }}
-                      height="16px"
-                      width="16px"
-                      src={context.meta.picture}
-                    />
+    );
+  }, [show, loading, selectedContext]);
 
-                    <Text
-                      style={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                      }}
-                      ml="8px"
-                      variant="inherit"
-                    >
-                      {context.meta.title || context.name}
-                      {/* TODO add notification */}
-                      {/* <Icons.ExpandMore ml="6px" /> */}
-                    </Text>
-                  </Flex>
-                )}
-              </MenuItem>
-            ))}
-        </Menu>
-      }
+  const menu = useMemo(() => {
+    return (
+      <Menu
+        id="context-menu"
+        style={{
+          ...{
+            ...(menuOrientation === 'top'
+              ? { bottom: 24 + 2 }
+              : { top: 24 + 2 }),
+          },
+          padding: '8px 2px',
+          minWidth: 225,
+          zIndex: 6,
+          visibility: show ? 'visible' : 'hidden',
+        }}
+        preventDefault
+        isOpen={show}
+        onClose={() => {
+          setShow(false);
+        }}
+      >
+        {customMenu ||
+          availableContexts.map((context: ContextType, i: number) => (
+            <MenuItem
+              key={`context-${i}`}
+              style={{ padding: '8px 8px' }}
+              type="neutral"
+              onClick={() => {
+                onContextClick(context);
+                setShow(false);
+              }}
+            >
+              {context.type === 'ship' ? (
+                <Flex alignItems="center">
+                  <Sigil
+                    patp={context.name}
+                    avatar={context.meta.avatar}
+                    clickable
+                    size={16}
+                    borderRadiusOverride="2px"
+                    color={[context.meta.color, 'white']}
+                  />
+                  <Text
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'row',
+                      justifyContent: 'space-between',
+                    }}
+                    ml="8px"
+                    variant="inherit"
+                  >
+                    {context.meta.nickname || context.name}
+                    {/* TODO add notification */}
+                    {/* <Icons.ExpandMore ml="6px" /> */}
+                  </Text>
+                </Flex>
+              ) : (
+                <Flex style={{ width: '100%', flex: 1 }}>
+                  <img
+                    style={{ borderRadius: 2 }}
+                    height="16px"
+                    width="16px"
+                    src={context.meta.picture}
+                  />
+
+                  <Text
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'row',
+                      justifyContent: 'space-between',
+                    }}
+                    ml="8px"
+                    variant="inherit"
+                  >
+                    {context.meta.title || context.name}
+                    {/* TODO add notification */}
+                    {/* <Icons.ExpandMore ml="6px" /> */}
+                  </Text>
+                </Flex>
+              )}
+            </MenuItem>
+          ))}
+      </Menu>
+    );
+  }, [loading, selectedContext, availableContexts, show]);
+  return (
+    <div style={{ position: 'relative' }}>
+      {button}
+      {menu}
     </div>
   );
 };

@@ -44,10 +44,11 @@ const defaultButtonStyles = {
   borderRadius: 4,
   borderWidth: 1,
   borderStyle: 'solid',
-  padding: 3,
+  px: 2,
   ml: 0,
   mr: 0,
   mb: 0,
+  height: 30,
   appearance: 'none',
   cursor: 'pointer',
 };
@@ -154,6 +155,12 @@ const buttonVariants = variant({
     },
     custom: {
       ...defaultButtonStyles,
+      borderColor: 'transparent',
+      '&:disabled': {
+        color: 'text.disabled',
+        backgroundColor: 'ui.disabled',
+        borderColor: 'ui.disabled',
+      },
     },
   },
 });
@@ -169,9 +176,9 @@ const buttonVariants = variant({
 //   }
 // `;
 
-const StyledButton = styled.button<ButtonProps>`
+const StyledButton = styled.div<ButtonProps>`
   &:focus {
-    ${focusRing}
+    /* ${focusRing} */
   }
   ${buttonVariants}
   ${compose(space, layout, color, background, flexbox, border, position)}
@@ -204,8 +211,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => (
     <StyledButton
+      as="button"
       ref={ref}
-      py={2}
       disabled={disabled}
       isLoading={isLoading}
       {...props}

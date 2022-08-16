@@ -6,6 +6,7 @@ interface IProps {
   highlightColor?: string;
   fontSize?: string;
   theme?: any;
+  disabled?: any;
 }
 
 export const TextButton = styled(styled.button`
@@ -29,7 +30,6 @@ export const TextButton = styled(styled.button`
   -moz-user-select: none; /* Old versions of Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none;
-  ${selectableFocus}
 
   ${(props: IProps) =>
     css`
@@ -50,6 +50,10 @@ export const TextButton = styled(styled.button`
             ? `${props.highlightColor}30`
             : `${props.theme.colors.brand.primary}30`
         };
+      }
+      :disabled {
+        pointer-events: none;
+        opacity: .5;
       }
     `};
 `)({}, compose(space, color, layout, typography));

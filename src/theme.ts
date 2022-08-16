@@ -1,8 +1,8 @@
 import { lighten, darken, rgba } from 'polished';
 
 export const fonts = {
-  body: '"Inter", sans-serif',
-  heading: '"Inter", sans-serif',
+  body: '"Rubik", sans-serif',
+  heading: '"Rubik", sans-serif',
   monospace: 'Source Code Pro, monospace',
 };
 
@@ -145,7 +145,7 @@ export const theme = {
         secondary: '#656565',
         tertiary: '#5D6064',
         disabled: '#999999',
-        placeholder: 'rgba(0, 0, 0, 0.5)',
+        placeholder: 'rgba(0, 0, 0, 0.3)',
         white: '#FFFFFF',
         inverse: '#FFFFFF',
         error: '#D0421B',

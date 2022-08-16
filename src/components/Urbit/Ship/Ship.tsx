@@ -22,8 +22,8 @@ export const Ship: any = (props: ShipProps) => {
       />
       <Text
         style={{ opacity: props.textOpacity || 0.95 }}
-        variant={props.nickname ? 'body' : 'patp'}
-        fontWeight="500"
+        variant="body"
+        fontWeight="400"
         // fontByType="monospace"
       >
         {props.nickname || props.patp}

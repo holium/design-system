@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useMemo, useState } from 'react';
 import { Flex, Box, Sigil } from '../../..';
 import {
   AppWindowStyle,
@@ -61,6 +61,21 @@ export const AppWindow: FC<AppWindowProps> = (props: AppWindowProps) => {
     children,
   } = props;
 
+  const ContextDropdown = useMemo(() => {
+    return (
+      <Context
+        loading={loadingContext}
+        menuOrientation="bottom"
+        style={{ marginRight: 8 }}
+        selectedContext={selectedContext}
+        onContextClick={onContextClick}
+        customMenu={app.contextMenu}
+        // @ts-ignore
+        availableContexts={contexts}
+      />
+    );
+  }, [contexts, app.contextMenu, selectedContext, loadingContext]);
+
   return (
     <AppWindowStyle isStandalone={isStandalone}>
       <Flex>
@@ -77,16 +92,7 @@ export const AppWindow: FC<AppWindowProps> = (props: AppWindowProps) => {
                 <Box>{app.name}</Box>
               </AppWindowTitleStyle>
             )}
-            <Context
-              loading={loadingContext}
-              menuOrientation="bottom"
-              style={{ marginRight: 8 }}
-              selectedContext={selectedContext}
-              onContextClick={onContextClick}
-              customMenu={app.contextMenu}
-              // @ts-ignore
-              availableContexts={contexts}
-            />
+            {ContextDropdown}
             <SubRouteWrapper isMobile={isMobile}>
               {subRoutes.map((subroute: SubRouteType) => (
                 <SubRouteNav
